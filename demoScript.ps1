@@ -43,17 +43,12 @@ $ret = [Params]::SystemParametersInfo($SPI_SETDESKWALLPAPER, 0, $Image, $fWinIni
 clear
 'starting'
 $imagePath = 'C:\Users\kulshk\Desktop\TestFolder\unsplashImage.jpg'
-$unsplashUrl = 'https://api.unsplash.com/photos/random/?client_id=c04297c0a0e35c2729ff49266c5fe091ce5e6278cc0a675ee893c29cdbd2b43b&auto=format'
+$unsplashUrl = 'https://api.unsplash.com/photos/random/?client_id=c04297c0a0e35c2729ff49266c5fe091ce5e6278cc0a675ee893c29cdbd2b43b'
+
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
 $unsplashResponse = Invoke-WebRequest -Uri $unsplashUrl -Method GET
 $obj = ConvertFrom-Json -InputObject $unsplashResponse
-#$downloadPath =  $obj.links.download
-$downloadPath = $obj.urls.raw+"fit=fill" #FIX WIDTH
-#$downloadPath
-# New-Item -Path $imagePath -ItemType File
-# Set-Content $imagePath $obj.links.download
-#$output = $imagePath
-#Invoke-WebRequest -Uri $downloadPath -OutFile $imagePath
+$downloadPath = $obj.urls.raw+"&fit=crop&w=1920&h=1080"
 $wc = New-Object System.Net.WebClient
 $wc.DownloadFile($downloadPath, $imagePath)
 'downloaded'

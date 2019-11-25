@@ -9,8 +9,8 @@ App to recreate images with contextual quotations from famous authors using the 
 - Use of Unsplash API. The app is registered in the name of Ibid.
 - Script written to set a wallpaper.
 - Script written to download a random image using Unsplash API.
+- Cropped the images to fit 1920 x 1080 pixel size.
 
 # Work yet to be done:
-- Need to dynamically resize images to fit on my screen.
 - Need to dynamically resize images to fit any screen.
 - Need to generalize the file path where the image gets stored across all systems. 
